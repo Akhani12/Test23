@@ -6,9 +6,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    name = request.args['name']
-    ids = request.args['ids']
-    return "<h1>My Name Is "+name+" And id is "+str(ids)+"</h1>"
+    with open("j.txt", 'w') as f:
+      f.write("harsh")
     return  "hii"
 
 
