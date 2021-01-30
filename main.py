@@ -7,10 +7,10 @@ import base64
 
 from flask import Flask, request
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def hello_world():
     p_bs_img = request.args['product_image']
     imgdata = base64.b64decode(str(p_bs_img))
@@ -222,4 +222,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False)
+    application.run(host='0.0.0.0', debug=False)
