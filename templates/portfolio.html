@@ -47,25 +47,26 @@
 
         <div class="portfolio mt-100">
             <div class="container">
-                <div class="section-header">
-                    <h2>Fun2one.com</h2>
-                    <p>Enjoy is first priority</p>
-                </div>
-
-                    <div class="row portfolio-container">
-                        {% for vd in video_data %}
-                        <div class="col-lg-3 col-md-6 portfolio-item">
-                            <div class="portfolio-img">
-                                <a href={{vd.links}}><img src=/{{vd.image}} class="img-fluid" alt="Portfolio"></a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>{{vd.desc}}</h3>
-                                <p>Web Design</p>
-                            </div>
-                        </div>
-                        {% endfor %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="section-header">
+                        <h2>Fun2one.com</h2>
+                        <p>Enjoy is first priority</p>
                     </div>
-
+                    <div class="row portfolio-container">
+                            {% for vd in video_data %}
+                            <div class="col-lg-3 col-md-6 portfolio-item">
+                                <div class="portfolio-img">
+                                    <a href="{% url 'home' %}"><img src=/{{vd.image}}  name="code" value={{vd.code}} class="img-fluid" alt="Portfolio"></a>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h3>{{vd.desc}}</h3>
+                                    <p>Web Design</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                </form>
             </div>
         </div>
 
@@ -81,9 +82,7 @@
                         <div class="col-lg-3 col-md-6 footer-newsletter">
                             <h4>Fun2one.com</h4>
                             <p>Enjoy is first priority</p>
-                            <form action="" method="post">
-                                <input type="email" name="email"><input type="submit"  value="Subscribe">
-                            </form>
+                            <input type="email" name="email" required><input type="submit" value="Subscribe">
                         </div>
                     </div>
                 </div>
