@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'header.html' %}
+
+<html lang="en">
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form method="post">
+							{% csrf_token %}
+                            {% if wrong %}
+                                <div class="row">
+                                    <h2 style="color: #f86161;">{{message}}</h2>
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <span class="form-label">Name</span>
+                                            <input class="form-control" value="{{mp_detail.name}}" name="name" type="text">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <span class="form-label">Address</span>
+                                            <input class="form-control" value="{{mp_detail.address}}" name="address" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <span class="form-label">Mo.Number</span>
+                                            <input class="form-control" value="{{mp_detail.mo_number}}" name="mo_number" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <span class="form-label">GST Number</span>
+                                            <input class="form-control" value="{{mp_detail.gst_number}}" name="gst_number" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="form-group">
+                                            <span class="form-label">Created</span>
+                                            <input class="form-control" value="{{mp_detail.created_at}}" name="created_at" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <table class="table dataTable align-middle table-row-dashed fs-6 gy-5" id="list_table">
+                                        <thead>
+                                            <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                              <th scope="col">Title</th>
+                                              <th scope="col">Item</th>
+                                              <th scope="col">Buy</th>
+                                              <th scope="col">MRP</th>
+                                              <th scope="col">Sell</th>
+                                              <th scope="col">Profit/Loss</th>
+                                              <th scope="col">Delete</th>
+                                           </tr>
+                                        </thead>
+                                        <tbody class="fw-bold text-gray-600">
+                                            {% for vd in video_data %}
+                                              <tr>
+                                                 <td>{{vd.title}}</td>
+                                                 <td>{{vd.item}}</td>
+                                                 <td>{{vd.buy_price}}</td>
+                                                 <td>{{vd.mrp}}</td>
+                                                  {% if vd.sell_price == None %}
+                                                      <td><button value="{{vd.code}}" name="code" type="submit" class="btn btn-outline-primary">Update</button>
+                                                  {% else %}
+                                                      <td>{{vd.sell_price}}</td>
+                                                  {% endif %}
+                                                  {% if vd.profit == None %}
+                                                        <td>-</td>
+                                                  {% else %}
+                                                        <td>{{vd.profit}}</td>
+                                                  {% endif %}
+                                                  {% if vd.is_delete%}
+                                                        <td><button class="btn btn-outline-danger" disabled>Deleted</button></td>
+                                                  {% elif vd.profit == None %}
+                                                    <td>-</td>
+                                                  {% else %}
+                                                  <td><button value="{{vd.code}}" formmethod="post" class="btn btn-outline-danger" name="delete_code" type="submit">Delete</button></td>
+                                                  {% endif %}
+                                              </tr>
+                                           {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% endif %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

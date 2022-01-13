@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from app1.models import Video
+from app1.models import *
 
-admin.site.register(Video)
+admin.site.register(Product)

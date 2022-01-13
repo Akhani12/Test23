@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'header.html' %}
+
+<html lang="en">
+
+<body>
+	<div id="booking" class="section" onmousemove="totalCalc()">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Title</span>
+										<input class="form-control" name="title" type="text" placeholder="Add product title">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Buy</span>
+										<input class="form-control" id='buy' name="buy" type="text" placeholder='Buy price'>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">MRP</span>
+										<input class="form-control" onmousemove="totalCalc()" id='mrp' name="mrp" type="text" placeholder='Add selling price'>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Margin</span>
+										<input class="form-control" id='margin' name="margin" type="text" placeholder='Add margin value'>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Items</span>
+										<input class="form-control" name="items" placeholder="Item" style="width: fit-content;" type="number" min="1" max="100">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Bill No.</span>
+										<input class="form-control" name="bill_no" placeholder="Add bill no." type="text">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Merchant</span>
+
+<!--									  <button type="button" value="{{pm.name}}" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--									  {{request.GET.merchant}}</button>-->
+<!--									  <div class="dropdown-menu">-->
+<!--										  {% for pm in merchants %}-->
+<!--											<a class="dropdown-item" name="merchant" value="{{pm.code}}">{{pm.name}}</a>-->
+<!--										  {% endfor %}-->
+<!--									  </div>-->
+										<select name="merchant" class="form-select" style="border-radius: 30px;width: 120px;height: 51px;text-align-last: center;font-size: larger;">
+                             			<option value="all">Select Client</option>
+                                			{% for pm in merchants %}
+                             					<option {% if request.GET.merchant == pm.code %}selected{% endif %} value="{{pm.code}}">{{pm.name}}</option>
+                                			{% endfor %}
+									 </select>
+									</div>
+								</div>
+							</div>
+							<button class="submit-btn" style="width: 12%;">Submit</button>
+							<a href='{% url "product" %}' class="btn btn-primary" style="width: 12%;height: 50px;border-radius: 30px;padding-top: 12px;">CANCEL</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

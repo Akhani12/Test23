@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'header.html' %}
+
+<html lang="en">
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Name</span>
+										<input class="form-control" name="name" type="text" placeholder="Add merchant name" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Address</span>
+										<input class="form-control" name="address" type="text" placeholder='Add address here'>
+									</div>
+								</div>
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">Mo. Number</span>
+										<input class="form-control" name="mo_number" type="text" placeholder='Add mobile number'>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">GST No.</span>
+										<input class="form-control" name="gst_number" type="text" placeholder='Add gst number'>
+									</div>
+								</div>
+
+
+							</div>
+							<button class="submit-btn" style="width: 12%;">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

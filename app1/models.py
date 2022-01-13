@@ -15,10 +15,31 @@ class CustomUserManager(UserManager):
 
 
 # Create your models here.
-class Video(Base):
+class Merchant(Base):
     created_at = models.DateTimeField(auto_now_add=True)
-    desc = models.CharField(max_length=500)
+    name = models.CharField(max_length=1000)
+    address = models.CharField(max_length=1000)
+    mo_number = models.CharField(max_length=1000)
+    gst_number = models.CharField(max_length=1000,null=True)
+    code = models.CharField(max_length=100, null=True)
+
+    objects = CustomUserManager
+
+
+# Create your models here.
+class Product(Base):
+    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=1000)
     image = models.ImageField(upload_to="static/uploadedphoto")
-    code = models.CharField(max_length=100,null=True)
+    code = models.CharField(max_length=100, null=True)
+    buy_price = models.FloatField(null=True)
+    margin = models.FloatField(null=True)
+    mrp = models.FloatField(null=True)
+    sold_out = models.FloatField(null=True)
+    sell_price = models.FloatField(null=True)
+    item = models.IntegerField(null=True)
+    bill_no = models.CharField(max_length=100,null=True)
+    merchant = models.ForeignKey(Merchant, on_delete=models.CASCADE, null=True, blank=True,
+                                 related_name="merchant_product")
 
     objects = CustomUserManager

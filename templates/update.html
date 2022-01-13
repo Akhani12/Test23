@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+{% include 'header.html' %}
+
+<html lang="en">
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<form method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Title</span>
+										<input class="form-control" value="{{datas.title}}" name="title" type="text" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Buy</span>
+										<input class="form-control" value="{{datas.buy_price}}" name="buy" type="text" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">MRP</span>
+										<input class="form-control" value="{{datas.mrp}}" name="mrp" type="text" readonly>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Bill No</span>
+										<input class="form-control" value="{{datas.bill_no}}" name="bill_no" type="text" readonly>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">Sell</span>
+										<input class="form-control" value="{{datas.sell_price}}" name="sell" placeholder="Selling Price" style="width: fit-content;" type="text">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">Items</span>
+										<input class="form-control" value="{{datas.item}}" name="items" style="width: fit-content;" readonly>
+									</div>
+								</div>
+							</div>
+							<button class="submit-btn" style="width: 12%;">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

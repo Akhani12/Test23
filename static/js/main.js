@@ -77,3 +77,35 @@
   
 })(jQuery);
 
+//$("#delete_code").on('click', function() {
+////   var pid = $("input[name='user_selected']:checked").val();
+//  var pid = document.getElementById("delete_code").value;
+//   if(pid === '' || pid === undefined){
+//    Swal.fire({
+//            title: 'Error',
+//            text: "Please select a record.",
+//            type: 'warning',
+//            confirmButtonColor: '#3085d6',
+//            confirmButtonText: 'OK',
+//        });
+//}
+//   else{
+//        $("#delete_code").attr('href', '/update/'+pid);
+//    }
+//
+//});
+function totalCalc() {
+    var buy = document.getElementById("buy").value;
+    var mrp = document.getElementById("mrp").value;
+    var margin = mrp - buy;
+    document.getElementById("margin").value = margin;
+    }
+
+//function totalMrp() {
+//    var buy = document.getElementById("buy").value;
+//    var margin = document.getElementById("margin").value;
+//    var mrp = buy + margin;
+//    document.getElementById("mrp").value = mrp;
+//    }
+
+

@@ -1,0 +1,68 @@
+{% load static %}
+{% include 'header.html' %}
+<html lang="en">
+    <body>
+
+        <div class="portfolio mt-100">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Merchants</h2>
+                    <h2><a href="{% url 'add_merchant' %}" type="button" class="btn btn-outline-primary">Add+</a></h2>
+                </div>
+                <form action="{% url 'update_product' %}" method="get">
+                   {% csrf_token %}
+
+                    <div class="row portfolio-container">
+                        <table class="table dataTable align-middle table-row-dashed fs-6 gy-5" id="list_table">
+                    <thead>
+                       <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                          <th scope="col">Name</th>
+                          <th scope="col">Created</th>
+                          <th scope="col">Address</th>
+                          <th scope="col">Mo.Number</th>
+                          <th scope="col">GST Number</th>
+                       </tr>
+                    </thead>
+                    <tbody class="fw-bold text-gray-600">
+                        {% for md in m_detail %}
+                          <tr onclick="window.location.href='{% url 'merchant_detail' code=md.code %}';">
+                              <td><a href='{% url "merchant_detail" code=md.code %}'>{{md.name}}</a></td>
+                              <td>{{md.created_at}}</td>
+                              <td>{{md.address}}</td>
+                              <td>{{md.mo_number}}</td>
+                              <td>{{md.gst_number}}</td>
+                          </tr>
+
+                       {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 footer-links"></div>
+                        <div class="col-lg-3 col-md-6 footer-links"></div>
+
+                        <div class="col-lg-3 col-md-6 footer-newsletter">
+                            <h4>Fun2one.com</h4>
+                            <p>Enjoy is first priority</p>
+                            <input type="email" name="email" required><input type="submit" value="Subscribe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 copyright">
+                        Copyright &copy; 2020 <a href="#">Fun2one.com</a>. All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="back-to-top"><i class="ion-ios-arrow-up"></i></a>
+    </body>
+</html>
