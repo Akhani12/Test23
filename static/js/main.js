@@ -77,9 +77,10 @@
   
 })(jQuery);
 
-//$("#delete_code").on('click', function() {
-////   var pid = $("input[name='user_selected']:checked").val();
-//  var pid = document.getElementById("delete_code").value;
+//$("#dropdowns").change(function () {
+//   var pid = $("input[name='user_selected']").val();
+//   var fid = $("input[name='merchant']").val();
+////  var pid = document.getElementById("delete_code").value;
 //   if(pid === '' || pid === undefined){
 //    Swal.fire({
 //            title: 'Error',
@@ -90,7 +91,7 @@
 //        });
 //}
 //   else{
-//        $("#delete_code").attr('href', '/update/'+pid);
+//       $("#client_drop").attr('href', '/home/'+pid);
 //    }
 //
 //});

@@ -25,11 +25,24 @@
 										<input class="form-control" value="{{datas.buy_price}}" name="buy" type="text" readonly>
 									</div>
 								</div>
-								<div class="col-md-6">
 
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Margin</span>
+										<input class="form-control" value="{{datas.margin}}" name="margin" type="text" readonly>
+									</div>
+								</div>
+								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">MRP</span>
 										<input class="form-control" value="{{datas.mrp}}" name="mrp" type="text" readonly>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Merchant</span>
+										<input class="form-control" value="{{datas.merchant_name}}" name="merchant" type="text" readonly>
 									</div>
 								</div>
 
@@ -44,7 +57,15 @@
 
 									<div class="form-group">
 										<span class="form-label">Sell</span>
-										<input class="form-control" value="{{datas.sell_price}}" name="sell" placeholder="Selling Price" style="width: fit-content;" type="text">
+										<input class="form-control" name="sell" placeholder="Selling Price" style="width: fit-content;" type="text">
+									</div>
+								</div>
+
+								<div class="col-md-6">
+
+									<div class="form-group">
+										<span class="form-label">Sold Out</span>
+										<input class="form-control" value="{{datas.sold_out}}" placeholder="Add sold out items number." name="sold_out" style="width: fit-content;" type="number" min="1" max="100">
 									</div>
 								</div>
 

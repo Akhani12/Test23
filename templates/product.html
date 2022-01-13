@@ -26,6 +26,7 @@
                           <th scope="col">Margin</th>
                           <th scope="col">MRP</th>
                           <th scope="col">Sell</th>
+                          <th scope="col">Update</th>
                           <th scope="col">Profit/Loss</th>
                           <th scope="col">Delete</th>
                        </tr>
@@ -47,10 +48,11 @@
                              <td>{{vd.margin}}</td>
                              <td>{{vd.mrp}}</td>
                               {% if vd.sell_price == None %}
-                                  <td><button value="{{vd.code}}" name="code" type="submit" class="btn btn-outline-primary">Update</button>
+                                <td>-</td>
                               {% else %}
-                                  <td>{{vd.sell_price}}</td>
+                                <td>{{vd.sell_price}}</td>
                               {% endif %}
+                              <td><button value="{{vd.code}}" name="code" type="submit" class="btn btn-outline-primary">Update</button>
                               {% if vd.profit == None %}
                                     <td>-</td>
                               {% else %}

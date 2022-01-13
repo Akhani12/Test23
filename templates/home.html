@@ -1,6 +1,13 @@
 {% load static %}
 {% include 'header.html' %}
-
+<script>
+    $("#select_client_list").change(function(){
+    if($(this).val()!=""){
+        $('[name="csrfmiddlewaretoken"]').remove();
+        $("#user_filter_form").submit();
+    }
+});
+</script>
 <html lang="en">
     <body>
         <div class="portfolio mt-100">
@@ -8,25 +15,29 @@
                 <div class="section-header">
                     <h2>AS</h2>
                 </div>
-                <form action="{% url 'update_product' %}" method="get">
                    {% csrf_token %}
+                    <select name="merchant" id="select_client_list" class="form-select" style="float:right;border-radius: 30px;width: 120px;height: 51px;text-align-last: center;font-size: larger;">
+                        <option value="all">Select Client</option>
+                        {% for pm in merchants %}
+                            <option {% if request.GET.merchant == pm.code %}selected{% endif %} value="{{pm.code}}">{{pm.name}}</option>
+                        {% endfor %}
+                    </select>
                     <div class="row portfolio-container">
                         <table class="table dataTable align-middle table-row-dashed fs-6 gy-5" id="list_table">
-                    <thead>
-                       <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                          <th scope="col">Title</th>
-                          <th scope="col">Item</th>
-                          <th scope="col">Buy</th>
-                          <th scope="col">Margin</th>
-                          <th scope="col">Sell</th>
-                          <th scope="col">Profit/Loss</th>
-                          <th scope="col">Delete</th>
-                       </tr>
-                    </thead>
-
-                    </table>
+                            <thead>
+                               <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                                  <th scope="col">Investment</th>
+                                  <th scope="col">Selling</th>
+                                  <th scope="col">Total</th>
+                               </tr>
+                                <tr>
+                                    <td>{{buy}}</td>
+                                    <td>{{sell}}</td>
+                                    <td>{{total}}</td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                </form>
             </div>
         </div>
 
